@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{array}
+% define the geometry of the document.
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+    right=20mm,
+    bottom=20mm
+}
+
+\makeatletter
+\def\borderline{
+    \begin{tikzpicture}[remember picture,overlay]
+    \draw[line width=1pt] 
+    ($(current page.north west)+(0.75cm,-0.75cm)$) 
+    rectangle 
+    ($(current page.south east)-(0.75cm,0.75cm)$);
+    
+    \draw[line width=0.4pt,densely dotted] 
+    ($(current page.north west)+(1.25cm,-1.25cm)$) 
+    rectangle 
+    ($(current page.south east)-(1.25cm,1.25cm)$);
+    \end{tikzpicture}
+}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{ | m{5cm} | m{7cm} | }
+        \hline
+        \textbf{Name} & Sphamandla Mbuyazi \\
+        \hline
+        \textbf{Student Number} & 2618115 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\borderline
+
+\section*{Question 1}
+To find the value of $c$ such that $f(x)$ is a distribution, we ensure that the total probability integrates to 1:
+
+\begin{align*}
+    \int_0^6 c(6-x) dx &= 1 \\
+    c \int_0^6 (6-x) dx &= 1 \\
+    c \left[6x - \frac{x^2}{2}\right]_0^6 &= 1 \\
+    18c &= 1 \\
+    c &= \frac{1}{18}
+\end{align*}
+
+\subsection*{Mean}
+\begin{align*}
+    E[X] &= \int_0^6 x \cdot \frac{1}{18}(6-x) dx \\
+         &= \frac{1}{18} \int_0^6 (6x - x^2) dx \\
+         &= \frac{1}{18} \left[3x^2 - \frac{x^3}{3}\right]_0^6 \\
+         &= 2
+\end{align*}
+
+\subsection*{Variance}
+\begin{align*}
+    E[X^2] &= \frac{1}{18} \int_0^6 x^2(6-x) dx \\
+           &= \frac{1}{18} \left[2x^3 - \frac{x^4}{4}\right]_0^6 \\
+           &= 6
+\end{align*}
+\begin{align*}
+    V(X) &= E[X^2] - (E[X])^2 \\
+         &= 6 - 2^2 = 2
+\end{align*}
+
+\section*{Question 2}
+Let $X \sim U(-2, 3)$, the uniform distribution between -2 and 3.
+
+\subsection*{(a) $P(X > 1)$}
+\begin{align*}
+    P(X > 1) &= \frac{3 - 1}{5} = 0.4
+\end{align*}
+% this is because solving this equation gives [-1,1]; and we want when x is less than -1 and greater than 1
+\subsection*{(b) $P(X^2 > 1)$}
+\begin{align*}
+    P(X^2 > 1) &= P(X < -1 \text{ or } X > 1) \\
+    &= \frac{1 + 2}{5} = 0.6
+\end{align*}
+
+\subsection*{(c) $E[X]$}
+\begin{align*}
+    E[X] &= \frac{-2 + 3}{2} = 0.5
+\end{align*}
+
+\subsection*{(d) $V(X)$}
+\begin{align*}
+    V(X) &= \frac{(3 - (-2))^2}{12} = \frac{25}{12}
+\end{align*}
+
+\section*{Question 3}
+Let $X \sim \text{Exponential}(\lambda = 1.5)$.
+
+\subsection*{(a) $P(X > 2)$}
+\begin{align*}
+    P(X > 2) &= e^{-1.5 \cdot 2} = e^{-3} \approx 0.0498
+\end{align*}
+
+\subsection*{(b) $P(X > 4)$}
+\begin{align*}
+    P(X > 4) &= e^{-1.5 \cdot 4} = e^{-6} \approx 0.00248
+\end{align*}
+
+\subsection*{(c) $E[X]$}
+\begin{align*}
+    E[X] &= \frac{1}{1.5} \approx 0.667
+\end{align*}
+
+\subsection*{(d) $V(X)$}
+\begin{align*}
+    V(X) &= \frac{1}{(1.5)^2} \approx 0.444
+\end{align*}
+
+\end{document}
